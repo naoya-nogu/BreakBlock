@@ -3,9 +3,7 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour {
 	public float speed = 1.0f;
-//	public int score;
-
-
+	private int myScore = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +22,9 @@ public class EnemyController : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision){
 		if (collision.gameObject.tag == "Player") {
+			ScoreHandler sh = ScoreHandler.GetInstance ();
+			sh.UpdateScore (this.myScore);
 			Destroy (gameObject);
-//			score += 1;
 		}	
 
 	}
